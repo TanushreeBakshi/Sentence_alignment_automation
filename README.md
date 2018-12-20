@@ -122,5 +122,7 @@ etc...
 
 tool developed under internship project:
 # "Automation of bilingual sentence alignment tool"
+
 Tanushree Bakshi
+
 Hrishikesh Ladikar
