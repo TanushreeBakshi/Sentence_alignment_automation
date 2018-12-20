@@ -1,6 +1,4 @@
-#CODE WRITTEN BY: Tanushree Bakshi (nagpur intern SVPCET) IT 2019 batch
-
-#command: bash run_indiv_adhyay.sh
+#bash run_indiv_adhyay.sh
 
 for i in `seq 1 18`;
 do
@@ -17,6 +15,11 @@ sed  '/^$/d' < hindi_$i > h
 mv h hindi_$i
 
 echo "hindi empty lines removed"
+
+	bash find_and_replace.sh english_$i
+	bash find_and_replace.sh hindi_$i
+
+echo "preprocessing done"
 	
 	./align-eng-hin.out a_english_$i.txt hindi_$i english_$i adhyay_aligned_$i.txt
 
