@@ -16,12 +16,7 @@
 
 6. save hindi adhyay as hindi_1...hindi_5 without .txt extension
 
-7. pre-processing of data: 
-	-find all ";" and replace with "@" in each input file
-[this is because the tool introduces its own ";" while aligning and original ";" may be lost at the end]
-	-make sure english_1... files and hindi_1... files DOES NOT contain any "\n and space" i.e an empty line with a space or tab
-
-8. run code:
+7. run code:
 		bash run_indiv_adhyay.sh
 
 ==============================================
@@ -34,17 +29,22 @@ Uses codes:
 
 2. removes empty lines from original files
 
-3. ./align-eng-hin.out
+3. find_and_replace.sh
+-for preprocessing of files.
+-replaces ; with @
+-swaps {[.?!]'} with {'[.?!]}
+
+4. ./align-eng-hin.out
 -for producing aligned files of paragraphs (check purpose)
 
-4. div_eng_hin.py
+5. div_eng_hin.py
 -for creating paragraph files of individual adhyay and removing complete paragraphs that did not align into Omitted folder (backtrack)
 
-5. rename_e.py and rename_h.py
+6. rename_e.py and rename_h.py
 -for renaming files into increasing order
 (if a file number is not available the tool crashes)
 
-6. split_para_and_feed.sh
+7. split_para_and_feed.sh
 -for running sentence alignment on paragraph files
 
 ================================================
@@ -107,22 +107,21 @@ etc...
 # END TASK
 -----------------------------------------------------
 
-1. copy every merge file from each adhyay into your own folder and merge using command: 
+1. 1. copy every merge file from each <AlignedFile> into your own folder and merge using command: 
 	cat $(find ./ -name "merge_*" | sort -V) >  <aligned_file>
 
-2. <aligned_file> is your final output file.
+2. copy code reverse_replace.sh into that folder.
 
-3. open the file and press ctrl+h :
-	-find all "\n ; " and replace with " ; "
-	-find all "@" and replace with ";"
+3. run command: bash reverse_replace.sh <aligned_file>
 
-[this is because the tool introduces its own ";" while aligning and original ";" may be lost at the end]
+4. <aligned_file> is your final output file.
+
+[The tool introduces its own ";" while aligning and original ";" may be lost at the end]
 
 =========================================================
 
-tool developed under internship project:
+ tool developed under internship project:
 # "Automation of bilingual sentence alignment tool"
 
-Tanushree Bakshi
-
-Hrishikesh Ladikar
+ Tanushree Bakshi
+ Hrishikesh Ladikar
